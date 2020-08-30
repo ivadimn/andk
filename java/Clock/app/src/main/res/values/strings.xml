@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Clock</string>
+    <string name="time_placeholder">00:00:00</string>
+</resources>
