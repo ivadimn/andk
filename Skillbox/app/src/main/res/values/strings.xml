@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Skillbox</string>
+    <string name="text_view">Text view</string>
+    <string name="inputName">Введите своё имя</string>
+    <string name="helloName">Привет %1$s</string>
+    <string name="clear_button">Очистить</string>
+    <string name="cleared_text">Текст очищен</string>
+    <string name="make_long_operation">Совершить долгую операцию</string>
+    <string name="long_operation_complete">Операция завершена</string>
+    <string name="allow_input_name">Вводим имя</string>
+    <string name="checkbox_load">Загружаем</string>
+    <string name="input_text">Введите текст</string>
+    <string name="add">Добавить</string>
+</resources>
