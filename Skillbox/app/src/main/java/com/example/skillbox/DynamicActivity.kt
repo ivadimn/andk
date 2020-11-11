@@ -20,7 +20,7 @@ class DynamicActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dynamic)
 
-        val parent = container
+        val parent = findViewById<LinearLayout>(R.id.container)
 
         addButton.setOnClickListener{
             val textToAdd = textinput.text.toString()

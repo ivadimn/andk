@@ -3,12 +3,17 @@ package com.example.skillbox
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.ProgressBar
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,9 +47,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun makeLongOperation() {
+
         longOperationProgress.visibility = View.VISIBLE
         makeLongOperation.isEnabled = false
-        Handler().postDelayed({
+        Handler(Looper.myLooper()!!).postDelayed({
             longOperationProgress.visibility = View.GONE
             makeLongOperation.isEnabled = true
             Toast.makeText(this, R.string.long_operation_complete, Toast.LENGTH_SHORT ).show()
