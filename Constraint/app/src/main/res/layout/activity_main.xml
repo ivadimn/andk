@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_goneMarginTop="4dp"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/firstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="72dp"
         android:text="Имя:"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,11 +31,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="right"
-        app:constraint_referenced_ids="lastName,firstName"
-        tools:layout_editor_absoluteX="411dp" />
+        app:constraint_referenced_ids="lastName,firstName,middleName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/toggleLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="36dp"
@@ -42,4 +44,14 @@
         android:text="Button"
         app:layout_constraintLeft_toRightOf="@id/barrier"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/middleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Отчество"
+        app:layout_constraintStart_toStartOf="@+id/lastName"
+        app:layout_constraintTop_toBottomOf="@+id/lastName"
+        app:layout_goneMarginTop="4dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
