@@ -66,7 +66,7 @@ class ToolbarActivity : AppCompatActivity() {
 
         })
 
-        (serchItem.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        /*(serchItem.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }
@@ -78,7 +78,7 @@ class ToolbarActivity : AppCompatActivity() {
                 return true
             }
 
-        } )
+        } )*/
 
 
     }
