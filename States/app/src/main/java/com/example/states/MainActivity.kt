@@ -6,7 +6,8 @@ import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
-import timber.log.Timber
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -75,6 +76,7 @@ class MainActivity : AppCompatActivity() {
     override fun onTopResumedActivityChanged(isTopResumedActivity: Boolean) {
         super.onTopResumedActivityChanged(isTopResumedActivity)
         DebugLogger.d(TAG, "onTopResumedActivityChanged was called ${hashCode()} $isTopResumedActivity")
+
     }
 
     companion object {
@@ -84,8 +86,6 @@ class MainActivity : AppCompatActivity() {
 
 object DebugLogger {
     fun d(tag : String, msg : String) {
-        if (BuildConfig.DEBUG) {
-            Log.d(tag, msg)
-        }
+         Log.d(tag, msg)
     }
 }
