@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ViewPager</string>
+    <string name="onboarding_text_1">Экран 1 Первая картинка</string>
+    <string name="onboarding_text_2">Экран 2 Вторая картинка</string>
+    <string name="onboarding_text_3">Экран 3 Третья картинка</string>
+    <string name="onboarding_text_4">Экран 4 Чнтвёртая картинка</string>
+    <string name="onboarding_text_5">Экран 5 Пятая картинка</string>
+</resources>
