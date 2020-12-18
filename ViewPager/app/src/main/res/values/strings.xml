@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">ViewPager</string>
-    <string name="onboarding_text_1">Экран 1 Первая картинка</string>
-    <string name="onboarding_text_2">Экран 2 Вторая картинка</string>
-    <string name="onboarding_text_3">Экран 3 Третья картинка</string>
-    <string name="onboarding_text_4">Экран 4 Чнтвёртая картинка</string>
-    <string name="onboarding_text_5">Экран 5 Пятая картинка</string>
+    <string name="onboarding_text_1">Василий Григорьевич Перов – Приезд институтки к слепому отцу</string>
+    <string name="onboarding_text_2">Василий Григорьевич Перов – Чаепитие в Мытищах, близ Москвы.</string>
+    <string name="onboarding_text_3">Василий Иванович Суриков – Искушение Христа. 1872</string>
+    <string name="onboarding_text_4">Василий Иванович Суриков – Сибирская красавица (Портрет Е. А. Рачковской)</string>
+    <string name="onboarding_text_5">Илья Ефимович Репин – Иван Грозный и сын его Иван 16 ноября 1581 года</string>
+    <string name="onboarding_text_6">Илья Ефимович Репин – Не ждали</string>
+    <string name="onboarding_text_7">Константин Егорович Маковский – Portrait 85</string>
+    <string name="onboarding_text_8">Константин Егорович Маковский – Богиня вод</string>
 </resources>

@@ -7,11 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FD4646</color>
 
     <color name="onboarding_color_1">#C9DC7E</color>
     <color name="onboarding_color_2">#1B88DC</color>
     <color name="onboarding_color_3">#DCA040</color>
     <color name="onboarding_color_4">#2FDC4A</color>
     <color name="onboarding_color_5">#9132DC</color>
+    <color name="onboarding_color_6">#12419E</color>
+    <color name="onboarding_color_7">#DFB9AD</color>
+    <color name="onboarding_color_8">#2F6049</color>
 
 </resources>

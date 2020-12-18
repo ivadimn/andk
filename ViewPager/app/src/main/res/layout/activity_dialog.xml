@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <Button
+        android:id="@+id/simpleDialogButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show simple dialog ..."
+        />
+
+    <Button
+        android:id="@+id/showDialogWithButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show dialog with buttons..."
+        />
+
+    <Button
+        android:id="@+id/showSingleChoiceDialogButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show single choice dialog..."
+        />
+
+    <Button
+        android:id="@+id/showMultiChoiceDialogButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show multi choice dialog..."
+        />
+
+    <Button
+        android:id="@+id/showDialogWithCustomLayoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show dialog with custom layout"
+        />
+
+    <Button
+        android:id="@+id/showDialogFragmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show dialog fragment"
+        />
+
+    <Button
+        android:id="@+id/showBottomSheetDialogButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show bottom sheet dialog "
+        />
+
+</LinearLayout>
