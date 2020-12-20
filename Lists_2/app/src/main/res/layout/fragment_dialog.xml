@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <RadioGroup
+        android:id="@+id/typeEntityRadioGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/actorTypeRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/actor"
+            tools:text="@tools:sample/full_names" />
+
+        <RadioButton
+            android:id="@+id/carTypeRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/car"
+            tools:text="@tools:sample/full_names" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType="text"
+        android:hint="@string/input_actor_name"
+        app:layout_constraintEnd_toEndOf="@id/typeEntityRadioGroup"
+        app:layout_constraintStart_toStartOf="@id/typeEntityRadioGroup"
+        app:layout_constraintTop_toBottomOf="@id/typeEntityRadioGroup" />
+
+    <EditText
+        android:id="@+id/countryEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType="text"
+        android:hint="@string/input_actor_country"
+        app:layout_constraintEnd_toEndOf="@id/typeEntityRadioGroup"
+        app:layout_constraintStart_toStartOf="@id/typeEntityRadioGroup"
+        app:layout_constraintTop_toBottomOf="@id/nameEditText" />
+
+    <EditText
+        android:id="@+id/dop1EditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/input_birthday_hint"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@id/typeEntityRadioGroup"
+        app:layout_constraintStart_toStartOf="@id/typeEntityRadioGroup"
+        app:layout_constraintTop_toBottomOf="@id/countryEditText" />
+
+    <EditText
+        android:id="@+id/dop2EditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/input_films_hint"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@id/typeEntityRadioGroup"
+        app:layout_constraintStart_toStartOf="@id/typeEntityRadioGroup"
+        app:layout_constraintTop_toBottomOf="@id/dop1EditText" />
+
+    <Button
+        android:id="@+id/okButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dop2EditText"
+        app:layout_constraintEnd_toEndOf="@id/typeEntityRadioGroup"
+        android:layout_margin="16dp"
+        android:text="@string/ok"
+        />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dop2EditText"
+        app:layout_constraintEnd_toStartOf="@+id/okButton"
+        android:layout_margin="16dp"
+        android:text="@string/cancel"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

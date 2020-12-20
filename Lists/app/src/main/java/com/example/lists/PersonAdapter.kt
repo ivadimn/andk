@@ -1,6 +1,7 @@
 package com.example.lists
 
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 
 class PersonAdapter (
@@ -12,7 +13,8 @@ class PersonAdapter (
         private const val TYPE_DEVELOPER = 2
     }
 
-    private var persons : List<Person> = emptyList()
+    private val differ : AsyncListDiffer<Person> = AsyncListDiffer(this,
+                                PersonDiffUtilCallback())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
@@ -23,7 +25,7 @@ class PersonAdapter (
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when(persons[position]) {
+        return when(differ.currentList[position]) {
             is Person.User -> TYPE_USER
             is Person.Developer -> TYPE_DEVELOPER
         }
@@ -32,12 +34,12 @@ class PersonAdapter (
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is UserHolder -> {
-                val person = persons[position].let { it as? Person.User }
+                val person = differ.currentList[position].let { it as? Person.User }
                         ?:  error("Person at position $position is not user")
                 holder.bind(person)
             }
             is DeveloperHolder -> {
-                val person = persons[position].let { it as? Person.Developer }
+                val person = differ.currentList[position].let { it as? Person.Developer }
                         ?:  error("Person at position $position is not developer")
                 holder.bind(person)
             }
@@ -45,9 +47,9 @@ class PersonAdapter (
         }
     }
 
-    override fun getItemCount(): Int = persons.size
+    override fun getItemCount(): Int = differ.currentList.size
 
     fun updatePersons(newPersons : List<Person>) {
-        persons = newPersons
+        differ.submitList(newPersons)
     }
 }

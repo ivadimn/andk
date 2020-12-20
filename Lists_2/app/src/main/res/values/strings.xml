@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Lists_2</string>
+    <string name="show_entity_list">Show entity list</string>
+    <string name="show_vertical_layout_manager">Vertical Layout manager</string>
+    <string name="show_horizontal_layout_manager">Horizontal Layout manager</string>
+    <string name="show_grid_layout_manager">Grid Layout manager</string>
+    <string name="show_horizontalgrid_layout_manager">Horizontal Grid Layout manager</string>
+    <string name="show_diffgrid_layout_manager">Different Grid Layout manager</string>
+    <string name="show_staggeredgrid_layout_manager">Staggered Grid Layout manager</string>
+
+    <string name="list_empty">Список элементов пуст</string>
+    <string name="actor">актёра</string>
+    <string name="car">автомобиль</string>
+    <string name="input_birthday_hint">Введите дату рождения актёра</string>
+    <string name="input_power_hint">Введите мощность двигателя</string>
+    <string name="input_films_hint">Введите список фильмов</string>
+    <string name="input_max_speed_hint">Введите максимальную скорость</string>
+    <string name="input_actor_name">Введите имя актёра</string>
+    <string name="input_actor_country">Введите страну</string>
+    <string name="input_car_name">Введите марку автомобиля</string>
+    <string name="input_car_country">Введите страну производителя</string>
+
+    <string name="add_entity">Добавить элемент</string>
+    <string name="ok">Ок</string>
+    <string name="cancel">Отменить</string>
+
+</resources>

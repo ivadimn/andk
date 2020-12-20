@@ -26,6 +26,7 @@ abstract class BasePersonHolder(
             avatarLink : String,
             age : Int
     ) {
+        Thread.sleep(20)
         nameTextView.text = name
         ageTextView.text = "Возраст ${age}"
 
