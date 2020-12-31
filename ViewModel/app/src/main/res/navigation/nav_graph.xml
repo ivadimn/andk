@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/entityListFragment">
+
+    <fragment
+        android:id="@+id/entityListFragment"
+        android:name="com.example.viewmodel.fragments.EntityListFragment"
+        android:label="EntityListFragment"
+        tools:layout="@layout/fragment_entity_list"
+        >
+        <action
+            android:id="@+id/action_entityListFragment_to_entityDetailFragment"
+            app:destination="@id/entityDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/entityDetailFragment"
+        android:name="com.example.viewmodel.fragments.EntityDetailFragment"
+        android:label="EntityDetailFragment"
+        tools:layout="@layout/fragment_entity_detail"
+        >
+        <argument
+            android:name="entityId"
+            app:argType="long" />
+    </fragment>
+</navigation>

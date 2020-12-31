@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:layout_margin="4dp"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/entityImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/countryTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/entityImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        tools:text="@tools:sample/full_names" />
+
+    <TextView
+        android:id="@+id/countryTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/filmsTextView"
+        app:layout_constraintEnd_toEndOf="@id/nameTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/nameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+        tools:text="USA" />
+
+    <TextView
+        android:id="@+id/filmsTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/nameTextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/nameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/countryTextView"
+        tools:src="Film 1 Film 2" />
+
+    <TextView
+        android:id="@+id/birthdayTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/entityImageView"
+        app:layout_constraintEnd_toEndOf="@id/entityImageView"
+        app:layout_constraintTop_toBottomOf="@id/entityImageView"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        tools:text="01.01.1970"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

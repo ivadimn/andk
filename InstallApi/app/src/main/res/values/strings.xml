@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">InstallApi</string>
+    <string name="title_activity_store">Install Sample</string>
+    <string name="begin_installation">Begin installation</string>
+    <string name="install_text">This sample shows how to use the install API.
+        In order to launch the installation, press the button at the bottom of the screen.</string>
+</resources>

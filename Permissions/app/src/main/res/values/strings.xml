@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Permissions</string>
+    <string name="load_image">Load image</string>
+    <string name="get_location">Get location</string>
+</resources>
