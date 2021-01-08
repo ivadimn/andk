@@ -49,12 +49,9 @@ class EntityListFragment : Fragment(R.layout.fragment_entity_list), DialogListen
             }
         })
         observeViewModelState()
+
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-        showEmptyList()
-    }
 
     private fun initList() {
         entityAdapter = EntityListAdapter { id ->
@@ -72,6 +69,7 @@ class EntityListFragment : Fragment(R.layout.fragment_entity_list), DialogListen
     }
 
     private fun addEntity() {
+        
         AddDialogFragment()
                 .show(childFragmentManager, "ENTITY_DIALOG")
     }
@@ -95,7 +93,10 @@ class EntityListFragment : Fragment(R.layout.fragment_entity_list), DialogListen
 
     private fun observeViewModelState() {
         entityListViewModel.entities
-            .observe(viewLifecycleOwner) {newEntities -> entityAdapter?.submitList(newEntities)}
+            .observe(viewLifecycleOwner) {newEntities ->
+                entityAdapter?.submitList(newEntities)
+                showEmptyList()
+            }
 
         entityListViewModel.showToast
             .observe(viewLifecycleOwner) {

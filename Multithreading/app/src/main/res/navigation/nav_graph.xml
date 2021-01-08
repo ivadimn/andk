@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.multithreading.fragments.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main"
+        >
+        <action
+            android:id="@+id/action_mainFragment_to_threadingFragment"
+            app:destination="@id/threadingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_raceConditionFragment"
+            app:destination="@id/raceConditionFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_deadlockFragment"
+            app:destination="@id/deadlockFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_handlerFragment"
+            app:destination="@id/handlerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/threadingFragment"
+        android:name="com.example.multithreading.fragments.ThreadingFragment"
+        android:label="ThreadingFragment"
+        tools:layout="@layout/fragment_threading"
+        />
+    <fragment
+        android:id="@+id/raceConditionFragment"
+        android:name="com.example.multithreading.fragments.RaceConditionFragment"
+        android:label="RaceConditionFragment"
+        tools:layout="@layout/fragment_race_condition"
+        />
+    <fragment
+        android:id="@+id/deadlockFragment"
+        android:name="com.example.multithreading.fragments.DeadlockFragment"
+        android:label="DeadlockFragment"
+        tools:layout="@layout/fragment_deadlock"
+        />
+    <fragment
+        android:id="@+id/handlerFragment"
+        android:name="com.example.multithreading.fragments.HandlerFragment"
+        android:label="HandlerFragment"
+        tools:layout="@layout/fragment_handler"/>
+</navigation>

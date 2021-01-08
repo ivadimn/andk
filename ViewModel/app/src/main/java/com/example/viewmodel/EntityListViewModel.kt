@@ -13,12 +13,12 @@ class EntityListViewModel : ViewModel() {
 
     private val entityLiveData = MutableLiveData<List<Entity>>(entityRepository.generateEntities(20))
 
-    private val showToastLiveData = MutableLiveData<Int>()
+    private val showToastLiveData = SingleLiveEvent<Int>()
 
     val entities : LiveData<List<Entity>>
         get() = entityLiveData
 
-    val showToast : LiveData<Int>
+    val showToast : SingleLiveEvent<Int>
         get() = showToastLiveData
 
     fun addEntity(entity: Entity) {

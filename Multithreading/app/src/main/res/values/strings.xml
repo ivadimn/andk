@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Multithreading</string>
+    <string name="threading">Threading</string>
+    <string name="race_condition">Race condition</string>
+    <string name="deadlock">Deadlock</string>
+    <string name="request_data">Request Data</string>
+    <string name="calculate">Calculate</string>
+    <string name="execute_task">Execute task</string>
+    <string name="handler">Handler</string>
+</resources>

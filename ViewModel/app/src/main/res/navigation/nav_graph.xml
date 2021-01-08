@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_entityListFragment_to_entityDetailFragment"
             app:destination="@id/entityDetailFragment" />
+        <action
+            android:id="@+id/action_entityListFragment_to_addDialogFragment"
+            app:destination="@id/addDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/entityDetailFragment"
@@ -25,4 +28,10 @@
             android:name="entityId"
             app:argType="long" />
     </fragment>
+    <fragment
+        android:id="@+id/addDialogFragment"
+        android:name="com.example.viewmodel.fragments.AddDialogFragment"
+        android:label="AddDialogFragment"
+        tools:layout="@layout/fragment_dialog"
+        />
 </navigation>
