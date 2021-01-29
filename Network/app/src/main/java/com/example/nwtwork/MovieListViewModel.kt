@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nwtwork.model.MovieRepository
 import com.example.nwtwork.model.RemoteMovie
+import okhttp3.Call
 
 class MovieListViewModel : ViewModel()  {
 
@@ -12,6 +13,7 @@ class MovieListViewModel : ViewModel()  {
 
     private val movieListLiveData = MutableLiveData<List<RemoteMovie>>()
     private val isLoadingLiveData = MutableLiveData<Boolean>()
+    private var currentCall : Call? = null
 
     val movieList : LiveData<List<RemoteMovie>>
     get() = movieListLiveData
@@ -21,9 +23,15 @@ class MovieListViewModel : ViewModel()  {
 
     fun search(text : String) {
         isLoadingLiveData.postValue(true)
-        repository.searchMovie(text) {movies ->
+        currentCall = repository.searchMovie(text) {movies ->
             isLoadingLiveData.postValue(false)
             movieListLiveData.postValue(movies)
         }
+        currentCall = null
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        currentCall?.cancel()
     }
 }
