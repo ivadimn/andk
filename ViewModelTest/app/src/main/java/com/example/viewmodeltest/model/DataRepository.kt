@@ -70,6 +70,13 @@ class DataRepository  {
 
     }
 
+    fun repeat(callback: (List<Event>, Boolean, String?) -> Unit) : Call {
+        Log.d("Eventfull Server", "repository repeat")
+        return Network.repateCall().apply {
+            enqueue(CallbackHandler(callback))
+        }
+    }
+
 
     //{'category':
     // [

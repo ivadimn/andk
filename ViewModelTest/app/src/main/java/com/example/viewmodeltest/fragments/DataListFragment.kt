@@ -3,10 +3,7 @@ package com.example.viewmodeltest.fragments
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.ProgressBar
+import android.widget.*
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -25,6 +22,8 @@ class DataListFragment : Fragment(R.layout.fragment_list_data) {
     private lateinit var categoryTextView: AutoCompleteTextView
     private lateinit var typeInfoTextView: AutoCompleteTextView
     private lateinit var countryTextView: AutoCompleteTextView
+    private lateinit var errorTextView: TextView
+    private lateinit var repeatButton: Button
     private lateinit var searchButton: Button
     private lateinit var eventList: RecyclerView
     private lateinit var progressBar: ProgressBar
@@ -39,6 +38,8 @@ class DataListFragment : Fragment(R.layout.fragment_list_data) {
         searchButton = requireView().findViewById(R.id.searchButton)
         eventList = requireView().findViewById(R.id.eventList)
         progressBar = requireView().findViewById(R.id.progressBar)
+        errorTextView = requireView().findViewById(R.id.errorTextView)
+        repeatButton = requireView().findViewById(R.id.repeatButton)
 
         initList()
         initParametersLists()
@@ -89,17 +90,39 @@ class DataListFragment : Fragment(R.layout.fragment_list_data) {
             viewModel.getEvents(category, type, country)
         }
 
+        repeatButton.setOnClickListener {
+            viewModel.repeat()
+        }
+
         viewModel.events.observe(viewLifecycleOwner) {
             eventListAdapter?.submitList(it)
         }
+        viewModel.errorMessage.observe(viewLifecycleOwner) {errorMessage ->
+            errorTextView.text = errorMessage
+        }
         viewModel.isLoading.observe(viewLifecycleOwner, ::updateViewState)
+        viewModel.isContentError.observe(viewLifecycleOwner, ::updateViewStateContentError)
+        viewModel.isNetworkError.observe(viewLifecycleOwner, ::updateViewStateNetworkError)
     }
 
-    fun updateViewState(isLoading : Boolean) {
+    private fun updateViewState(isLoading : Boolean) {
         categoryTextView.isEnabled = !isLoading
         typeInfoTextView.isEnabled = !isLoading
         countryTextView.isEnabled = !isLoading
         searchButton.isEnabled = !isLoading
         progressBar.isVisible = isLoading
+    }
+
+    private fun updateViewStateContentError(isContentError : Boolean) {
+        errorTextView.isVisible = isContentError
+    }
+
+    private fun updateViewStateNetworkError(isNetworkError : Boolean) {
+        errorTextView.isVisible = isNetworkError
+        categoryTextView.isEnabled = !isNetworkError
+        typeInfoTextView.isEnabled = !isNetworkError
+        countryTextView.isEnabled = !isNetworkError
+        searchButton.isEnabled = !isNetworkError
+        repeatButton.isVisible = isNetworkError
     }
 }

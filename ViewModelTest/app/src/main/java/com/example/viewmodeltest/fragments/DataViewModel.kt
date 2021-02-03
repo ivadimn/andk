@@ -20,6 +20,10 @@ class DataViewModel : ViewModel() {
     private val countriesLiveData = MutableLiveData<List<String>>()
     private val eventsLiveData = MutableLiveData<List<Event>>()
     private val isLoadingLiveData = MutableLiveData<Boolean>()
+    private val isNetworkErrorLiveData = MutableLiveData<Boolean>()
+    private val isContentErrorLiveData = MutableLiveData<Boolean>()
+    private val errorMessageLiveData = MutableLiveData<String>()
+
 
 
     val categories : LiveData<List<String>>
@@ -37,9 +41,26 @@ class DataViewModel : ViewModel() {
     val isLoading : LiveData<Boolean>
     get() = isLoadingLiveData
 
+    val isNetworkError : LiveData<Boolean>
+    get() = isNetworkErrorLiveData
+
+    val isContentError : LiveData<Boolean>
+    get() = isContentErrorLiveData
+
+    val errorMessage : LiveData<String>
+    get() = errorMessageLiveData
+
     private val callbackHandler = { events : List<Event>, isError : Boolean, errorMsg : String?  ->
         isLoadingLiveData.postValue(false)
         eventsLiveData.postValue(events)
+        if (events.isEmpty()) {
+            val message = errorMsg ?: "Вернулся пустой список попробуйте поискать с другими параметрами"
+            errorMessageLiveData.postValue(message)
+            if (isError)
+                isNetworkErrorLiveData.postValue(true)
+            else
+                isContentErrorLiveData.postValue(true)
+        }
     }
 
 
@@ -59,8 +80,19 @@ class DataViewModel : ViewModel() {
 
     fun getEvents(category : String, type : String, country : String) {
         isLoadingLiveData.postValue(true)
+        isContentErrorLiveData.postValue(false)
+        errorMessageLiveData.postValue("")
         Log.d("Eventfull Server", "view model getEvents")
         call = repository.getEvents(category, type, country, callbackHandler)
+        call = null
+    }
+
+    fun repeat() {
+        isLoadingLiveData.postValue(true)
+        isNetworkErrorLiveData.postValue(false)
+        errorMessageLiveData.postValue("")
+        Log.d("Eventfull Server", "view model repeat call")
+        call = repository.repeat(callbackHandler)
         call = null
     }
 

@@ -66,4 +66,8 @@ object Network {
         Log.d("Eventfull Server", "request now executing")
         return client.newCall(request)
     }
+
+    fun repateCall() : Call {
+        return client.newCall(request)
+    }
 }
