@@ -26,6 +26,8 @@
         app:layout_constraintStart_toEndOf="@id/imageView"
         android:textSize="14sp"
         tools:text="Any event"
+        android:singleLine="false"
+        android:breakStrategy="balanced"
         />
 
     <TextView
