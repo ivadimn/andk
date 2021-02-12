@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Retrofit</string>
+    <string name="enter_query_text">Enter query text</string>
+    <string name="search">Search</string>
+</resources>
