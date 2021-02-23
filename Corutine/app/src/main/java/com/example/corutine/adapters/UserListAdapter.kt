@@ -1,4 +1,11 @@
 package com.example.corutine.adapters
 
-class UserListAdapter {
+import com.example.corutine.model.RemoteUser
+import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
+
+class UserListAdapter : AsyncListDifferDelegationAdapter<RemoteUser>(UserDiffUtilCallback()) {
+
+    init {
+        delegatesManager.addDelegate(UserAdapterDelegate())
+    }
 }

@@ -1,4 +1,9 @@
 package com.example.corutine.model
 
-class ServerItemWrapper {
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
+data class ServerItemWrapper<T>(
+    val items : List<T>
+) {
 }

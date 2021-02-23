@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.corutine.fragments.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main"
+        >
+        <action
+            android:id="@+id/action_mainFragment_to_basicCoroutineFragment2"
+            app:destination="@id/basicCoroutineFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_userListFragment"
+            app:destination="@id/userListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_errorCancelFragment"
+            app:destination="@id/errorCancelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/basicCoroutineFragment"
+        android:name="com.example.corutine.fragments.BasicCoroutineFragment"
+        android:label="BasicCoroutineFragment" />
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.example.corutine.fragments.UserListFragment"
+        android:label="UserListFragment" />
+    <fragment
+        android:id="@+id/errorCancelFragment"
+        android:name="com.example.corutine.fragments.ErrorCancelFragment"
+        android:label="ErrorCancelFragment" />
+</navigation>

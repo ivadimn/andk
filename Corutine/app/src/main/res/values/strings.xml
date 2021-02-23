@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Corutine</string>
+    <string name="basic_coroutines">Basic coroutines</string>
+    <string name="callback_to_suspend">Callback to suspend</string>
+    <string name="error_and_cancelling">Error and cancelling</string>
+    <string name="enter_query_text">Enter query text</string>
+    <string name="search">Search</string>
+    <string name="cancel">Cancel</string>
+</resources>
