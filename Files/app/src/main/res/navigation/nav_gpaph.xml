@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_gpaph"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.files.fragments.MenuFragment"
+        android:label="MenuFragment"
+        tools:layout="@layout/fragment_menu">
+        <action
+            android:id="@+id/action_menuFragment_to_assetsFilesFragment"
+            app:destination="@id/assetsFilesFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_internalStorageFragment"
+            app:destination="@id/internalStorageFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_externalStorageFragment"
+            app:destination="@id/externalStorageFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_sharedPreferencesFragment"
+            app:destination="@id/sharedPreferencesFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_dataStoreFragment"
+            app:destination="@id/dataStoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assetsFilesFragment"
+        android:name="com.example.files.fragments.AssetsFilesFragment"
+        android:label="AssetsFilesFragment"
+        tools:layout="@layout/fragment_assets_files"
+        />
+    <fragment
+        android:id="@+id/internalStorageFragment"
+        android:name="com.example.files.fragments.InternalStorageFragment"
+        android:label="InternalStorageFragment"
+        tools:layout="@layout/fragment_internal_storage"
+        />
+    <fragment
+        android:id="@+id/externalStorageFragment"
+        android:name="com.example.files.fragments.ExternalStorageFragment"
+        android:label="ExternalStorageFragment"
+        tools:layout="@layout/fragment_external_storage"
+        />
+    <fragment
+        android:id="@+id/sharedPreferencesFragment"
+        android:name="com.example.files.fragments.SharedPreferencesFragment"
+        android:label="SharedPreferencesFragment"
+        tools:layout="@layout/fragment_shared_preferences"
+        />
+    <fragment
+        android:id="@+id/dataStoreFragment"
+        android:name="com.example.files.fragments.DataStoreFragment"
+        android:label="DataStoreFragment"
+        tools:layout="@layout/fragment_data_store"
+        />
+</navigation>

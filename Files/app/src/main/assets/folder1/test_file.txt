@@ -1,0 +1,1 @@
+content from asset file - folder1/test-file.txt

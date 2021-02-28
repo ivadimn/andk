@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Files</string>
+    <string name="assets_files">Assets files</string>
+    <string name="internal_storage">Internal storage</string>
+    <string name="save">Save</string>
+    <string name="load">Load</string>
+    <string name="shared_preferences">Shared Preferences</string>
+    <string name="data_store">Data store</string>
+</resources>
