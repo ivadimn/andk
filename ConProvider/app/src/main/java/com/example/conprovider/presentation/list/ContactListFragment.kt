@@ -1,15 +1,21 @@
 package com.example.conprovider.presentation.list
 
+import android.Manifest
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.conprovider.databinding.FragmentContactListBinding
 import com.example.conprovider.presentation.list.adapter.ContactListAdapter
+import permissions.dispatcher.PermissionRequest
+import permissions.dispatcher.ktx.constructPermissionsRequest
 
 class ContactListFragment : Fragment() {
     private var _binding : FragmentContactListBinding? = null
@@ -34,8 +40,17 @@ class ContactListFragment : Fragment() {
         initToolbar()
         initList()
         initViewModel()
-        viewModel.getAllContacts()
 
+        Handler(Looper.myLooper()!!).post {
+            constructPermissionsRequest(
+                Manifest.permission.READ_CONTACTS,
+                onShowRationale = ::onContactPermissionShowRationale,
+                onPermissionDenied = ::onContactPermissionDenied,
+                onNeverAskAgain = ::onContactPermissionNeverAskAgain,
+                requiresPermission = { viewModel.getAllContacts()}
+            )
+                .launch()
+        }
     }
 
     private fun initViewModel() {
@@ -58,6 +73,20 @@ class ContactListFragment : Fragment() {
         binding.toolbar.title = "Contacts"
     }
 
+    private fun onContactPermissionDenied() {
+        toast("Доступ к контактам запрещён")
+    }
+
+    private fun onContactPermissionShowRationale(request : PermissionRequest) {
+        request.proceed()
+    }
+
+    private fun onContactPermissionNeverAskAgain() {
+        toast("Разрешите доступ к контактам запрещён в настройках приложения...")
+    }
+
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -65,4 +94,7 @@ class ContactListFragment : Fragment() {
         contactAdapter = null
     }
 
+    private fun toast(msg : String) {
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+    }
 }
