@@ -11,7 +11,7 @@ class ContactRepository {
 
     suspend fun saveContact(name : String, phone : String) = withContext(Dispatchers.IO) {
         if (!phonePattern.matcher(phone).matches() || name.isBlank()) {
-            throw RuntimeException("Invalid contact data")
+            throw IncorrectInformationException()
         }
     }
 
