@@ -65,6 +65,13 @@ dependencies {
     //Permissions
     implementation "org.permissionsdispatcher:permissionsdispatcher-ktx:1.0.1"
 
+    //Moshi
+    def moshiVersion = '1.9.3'
+
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

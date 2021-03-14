@@ -10,5 +10,15 @@
         android:name="com.example.conprovider.presentation.list.ContactListFragment"
         android:label="ContactListFragment"
         tools:layout="@layout/fragment_contact_list"
+        >
+        <action
+            android:id="@+id/action_contactListFragment_to_addContactFragment"
+            app:destination="@id/addContactFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addContactFragment"
+        android:name="com.example.conprovider.presentation.add.AddContactFragment"
+        android:label="AddContactFragment"
+        tools:layout="@layout/fragment_add_contact"
         />
 </navigation>

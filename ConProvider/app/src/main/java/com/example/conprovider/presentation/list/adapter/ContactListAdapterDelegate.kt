@@ -6,7 +6,9 @@ import com.example.conprovider.data.Contact
 import com.example.conprovider.databinding.ItemContactBinding
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
 
-class ContactListAdapterDelegate :
+class ContactListAdapterDelegate(
+        private val onClick : (Contact) -> Unit
+) :
     AbsListItemAdapterDelegate<Contact, Contact, ContactViewHolder>() {
     override fun isForViewType(item: Contact, items: MutableList<Contact>, position: Int): Boolean {
         return true
@@ -14,7 +16,7 @@ class ContactListAdapterDelegate :
 
     override fun onCreateViewHolder(parent: ViewGroup): ContactViewHolder {
         return ContactViewHolder(ItemContactBinding.inflate(LayoutInflater.from(parent.context),
-            parent, false))
+            parent, false), onClick)
     }
 
     override fun onBindViewHolder(

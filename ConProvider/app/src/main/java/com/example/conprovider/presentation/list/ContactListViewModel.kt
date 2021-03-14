@@ -14,15 +14,23 @@ class ContactListViewModel : ViewModel() {
     private val repository = ContactRepository()
 
     private val contactListLiveData = MutableLiveData<List<Contact>>()
+    private val callLiveData = MutableLiveData<String>()
 
     val contactList : LiveData<List<Contact>>
     get() = contactListLiveData
+
+    val call : LiveData<String>
+    get() = callLiveData
 
     fun getAllContacts() {
         viewModelScope.launch {
             contactListLiveData.postValue(repository.getAllContacts())
         }
 
+    }
+
+    fun callToContact(contact: Contact) {
+        contact.phones.firstOrNull()?.let { callLiveData.postValue(it) }
     }
 
 }
