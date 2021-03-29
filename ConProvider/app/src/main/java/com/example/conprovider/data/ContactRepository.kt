@@ -75,9 +75,11 @@ class ContactRepository {
         val list = mutableListOf<Contact>()
         val nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
         val idIndex = cursor.getColumnIndex(ContactsContract.Contacts._ID)
+
         do {
             val id = cursor.getLong(idIndex)
             val name = cursor.getString(nameIndex) ?: "Not name"
+
             list.add(Contact(id, name, getPhonesForContact(id)))
         } while (cursor.moveToNext())
 
