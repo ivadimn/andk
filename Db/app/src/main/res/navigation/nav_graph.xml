@@ -3,8 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/userListFragment">
+    app:startDestination="@id/menuFragment">
 
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.db.MenuFragment"
+        android:label="MenuFragment"
+        tools:layout="@layout/fragment_menu"
+        >
+        <action
+            android:id="@+id/action_menuFragment_to_userListFragment"
+            app:destination="@id/userListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userListFragment"
         android:name="com.example.db.presentation.listusers.UserListFragment"
@@ -26,4 +36,5 @@
             app:argType="long"
             android:defaultValue="0L" />
     </fragment>
+
 </navigation>

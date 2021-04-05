@@ -6,8 +6,8 @@ object MessagesContract {
 
     object Columns {
         const val ID = "id"
-        const val FROM_USER = "from_user_id"
-        const val TO_USER = "to_user_id"
+        const val FROM_USER_ID = "from_user_id"
+        const val TO_USER_ID = "to_user_id"
         const val BODY = "body"
         const val IS_IMPORTANT = "is_important"
         const val IS_DELIVERED = "is_delivered"

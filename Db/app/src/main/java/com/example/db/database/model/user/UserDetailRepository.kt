@@ -27,7 +27,7 @@ class UserDetailRepository {
         if (isDataValid(name, family, phone, email)) {
             var fileName = ""
             if (userPhoto != null) {
-                fileName = phone
+                fileName = "$family$name${phone.substring(1)}"
                 savePhoto(userPhoto!!, fileName)
             }
             val user = User(0, name, family, phone, email, fileName,
@@ -48,7 +48,7 @@ class UserDetailRepository {
     suspend fun updateUser(name : String, family : String, phone : String, email : String) : Int {
         if (isDataValid(name, family, phone, email)) {
             if (userPhoto != null) {
-                savePhoto(userPhoto!!, tmpUser!!.phone)
+                savePhoto(userPhoto!!, tmpUser!!.photo)
             }
             val user = User(tmpUser!!.id, name, family, phone, email, tmpUser!!.photo,
                 tmpUser!!.createdAt, Instant.now())

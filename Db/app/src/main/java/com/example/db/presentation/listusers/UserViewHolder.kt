@@ -26,11 +26,21 @@ class UserViewHolder(
         binding.emailTextView.text = user.email
 
         val file = File(folder, user.photo)
+
         //binding.avatarImageView.setImageBitmap(bmp)
-        Glide.with(binding.root)
-            .load(file)
-            .placeholder(R.drawable.ic_placeholder)
-            .into(binding.avatarImageView)
+        if (file.canRead()) {
+            Glide.with(binding.root)
+                    .load(BitmapFactory.decodeStream(file.inputStream()))
+                    .placeholder(R.drawable.ic_placeholder)
+                    .into(binding.avatarImageView)
+        }
+        else {
+            Glide.with(binding.root)
+                    .load("")
+                    .placeholder(R.drawable.ic_placeholder)
+                    .into(binding.avatarImageView)
+        }
+
 
         binding.root.setOnClickListener {
             onItemClick(user.id)
