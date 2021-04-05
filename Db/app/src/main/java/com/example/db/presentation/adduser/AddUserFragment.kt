@@ -83,7 +83,8 @@ class AddUserFragment : Fragment() {
     }
 
     private fun registerActivityResult() {
-        val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+
+        val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             Log.d("Add user", "Uri result - $uri")
             val bitmap = getBitmap(uri!!)
             binding.photoImageView.setImageBitmap(bitmap)

@@ -1,12 +1,10 @@
-package com.example.db.database.model
+package com.example.db.database.model.user
 
-import android.speech.tts.TextToSpeech
 import androidx.room.*
 import com.example.db.database.converters.InstantConverter
 import org.threeten.bp.Instant
 
 @Entity(tableName = UsersContract.TABLE_NAME)
-@TypeConverters(InstantConverter::class)
 data class User(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = UsersContract.Columns.ID)

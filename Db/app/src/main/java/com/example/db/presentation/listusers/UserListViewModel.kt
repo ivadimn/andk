@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.db.database.model.User
-import com.example.db.database.model.UsersRepository
+import com.example.db.database.model.user.User
+import com.example.db.database.model.user.UsersRepository
 import kotlinx.coroutines.launch
 
 class UserListViewModel : ViewModel() {

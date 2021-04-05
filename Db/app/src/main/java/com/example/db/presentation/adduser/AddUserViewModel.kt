@@ -1,14 +1,13 @@
 package com.example.db.presentation.adduser
 
 import android.graphics.Bitmap
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.db.SingleLiveEvent
-import com.example.db.database.model.User
-import com.example.db.database.model.UserDetailRepository
+import com.example.db.database.model.user.User
+import com.example.db.database.model.user.UserDetailRepository
 import kotlinx.coroutines.launch
 
 class AddUserViewModel : ViewModel() {

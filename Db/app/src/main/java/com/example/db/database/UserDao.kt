@@ -1,8 +1,8 @@
 package com.example.db.database
 
 import androidx.room.*
-import com.example.db.database.model.User
-import com.example.db.database.model.UsersContract
+import com.example.db.database.model.user.User
+import com.example.db.database.model.user.UsersContract
 
 @Dao
 interface UserDao  {

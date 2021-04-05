@@ -2,9 +2,12 @@ package com.example.db.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.db.database.model.User
+import androidx.room.TypeConverters
+import com.example.db.database.converters.InstantConverter
+import com.example.db.database.model.user.User
 
 @Database(entities = [User::class], version = ChatDatabase.DB_VERSION)
+@TypeConverters(InstantConverter::class)
 abstract class ChatDatabase : RoomDatabase() {
 
     abstract fun userDao() : UserDao

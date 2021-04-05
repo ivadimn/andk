@@ -1,4 +1,4 @@
-package com.example.db.database.model
+package com.example.db.database.model.user
 
 import android.provider.ContactsContract
 
