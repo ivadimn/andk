@@ -68,7 +68,6 @@ class UserDetailRepository {
 
         val buffer = ByteBuffer.allocate(bmp.byteCount)
         bmp.copyPixelsToBuffer(buffer)
-        val bmpStream  = ByteArrayInputStream(buffer.array())
 
         val folder = App.context.getExternalFilesDir(CHAT_EXTERNAL_DIR)
         val file = File(folder, fileName)

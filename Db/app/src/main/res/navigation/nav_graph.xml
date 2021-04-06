@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_menuFragment_to_userListFragment"
             app:destination="@id/userListFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_messageListFragment"
+            app:destination="@id/messageListFragment" />
     </fragment>
     <fragment
         android:id="@+id/userListFragment"
@@ -36,5 +39,9 @@
             app:argType="long"
             android:defaultValue="0L" />
     </fragment>
+    <fragment
+        android:id="@+id/messageListFragment"
+        android:name="com.example.db.presentation.messages.MessageListFragment"
+        android:label="MessageListFragment" />
 
 </navigation>

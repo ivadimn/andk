@@ -23,7 +23,6 @@ import org.threeten.bp.Instant
                 )
         ]
 )
-
 data class Message(
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = MessagesContract.Columns.ID)

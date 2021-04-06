@@ -15,6 +15,10 @@ class UsersRepository {
         userDao.removeUserById(user.id)
     }
 
+    suspend fun getUserChat(userId : Long) : UserChat {
+        return userDao.getUserChat(userId)
+    }
+
 
 
 

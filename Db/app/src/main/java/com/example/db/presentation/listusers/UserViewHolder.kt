@@ -28,9 +28,18 @@ class UserViewHolder(
         val file = File(folder, user.photo)
 
         //binding.avatarImageView.setImageBitmap(bmp)
-        if (file.canRead()) {
+        Glide.with(binding.root)
+                .load(if (user.photo.isNotEmpty())
+                    BitmapFactory.decodeStream(File(folder, user.photo).inputStream())
+                    else "")
+                .placeholder(R.drawable.ic_placeholder)
+                .into(binding.avatarImageView)
+
+        /*if (file.exists()) {
             Glide.with(binding.root)
-                    .load(BitmapFactory.decodeStream(file.inputStream()))
+                    .load(if (user.photo.isNotEmpty())
+                        BitmapFactory.decodeStream(File(folder, user.photo).inputStream())
+                        else "")
                     .placeholder(R.drawable.ic_placeholder)
                     .into(binding.avatarImageView)
         }
@@ -39,7 +48,7 @@ class UserViewHolder(
                     .load("")
                     .placeholder(R.drawable.ic_placeholder)
                     .into(binding.avatarImageView)
-        }
+        }*/
 
 
         binding.root.setOnClickListener {

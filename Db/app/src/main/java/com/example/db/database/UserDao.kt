@@ -1,7 +1,9 @@
 package com.example.db.database
 
 import androidx.room.*
+import com.example.db.database.model.message.MessagesContract
 import com.example.db.database.model.user.User
+import com.example.db.database.model.user.UserChat
 import com.example.db.database.model.user.UsersContract
 
 @Dao
@@ -23,6 +25,9 @@ interface UserDao  {
 
     @Update
     suspend fun updateUser(user: User)
+
+    @Query("Select * From ${UsersContract.TABLE_NAME} Where id = :userId" )
+    suspend fun getUserChat(userId : Long) : UserChat
 
 
 

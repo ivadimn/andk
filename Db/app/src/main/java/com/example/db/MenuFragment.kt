@@ -27,6 +27,11 @@ class MenuFragment : Fragment() {
             findNavController().navigate(action)
         }
 
+        binding.fkButton.setOnClickListener {
+            val action = MenuFragmentDirections.actionMenuFragmentToMessageListFragment()
+            findNavController().navigate(action)
+        }
+
     }
 
     override fun onDestroyView() {
