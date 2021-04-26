@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="ru.ivadimn.notifications.MenuFragment"
+        android:label="MenuFragment"
+        tools:layout="@layout/fragment_menu"
+        >
+        <action
+            android:id="@+id/action_menuFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_firebaseFragment"
+            app:destination="@id/firebaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="ru.ivadimn.notifications.presentation.NotificationFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/fragment_notification"
+        />
+    <fragment
+        android:id="@+id/firebaseFragment"
+        android:name="ru.ivadimn.notifications.firebase.FirebaseFragment"
+        android:label="FirebaseFragment"
+        tools:layout="@layout/firebase_fragment"
+        />
+</navigation>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "156122080866",
+    "project_id": "ivadimn-skillbox",
+    "storage_bucket": "ivadimn-skillbox.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156122080866:android:79fcf60cb1b364cce0933b",
+        "android_client_info": {
+          "package_name": "ru.ivadimn.notifications"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156122080866-jaffb4hlk4mjbeo8ktoki6rghkacmul9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvVmG5CJBTdJtvxs4-bHDvHIstBroTUNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156122080866-jaffb4hlk4mjbeo8ktoki6rghkacmul9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
