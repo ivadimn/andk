@@ -3,9 +3,12 @@ package ru.ivadimn.flowstudy
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.CheckBox
+import android.widget.CompoundButton
 import android.widget.EditText
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.sendBlocking
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
@@ -25,6 +28,20 @@ fun EditText.changedTextFlow() : Flow<String> {
         awaitClose {
             Log.d("Flow", "Flow finished")
             this@changedTextFlow.removeTextChangedListener(changeTextListener)
+        }
+    }
+}
+
+fun CheckBox.checkedChangesFlow() : Flow<Boolean> {
+    return callbackFlow {
+        val checkedChangeListener =
+            CompoundButton.OnCheckedChangeListener { _, isChecked ->
+                sendBlocking(isChecked)
+            }
+
+        setOnCheckedChangeListener(checkedChangeListener)
+        awaitClose {
+            setOnCheckedChangeListener(null)
         }
     }
 }

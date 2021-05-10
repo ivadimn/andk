@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_menuFragment_to_flowBasicFragment"
             app:destination="@id/flowBasicFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_flowOperatorsFragment"
+            app:destination="@id/flowOperatorsFragment" />
     </fragment>
 
 
@@ -22,6 +25,12 @@
         android:name="ru.ivadimn.flowstudy.flowbasic.FlowBasicFragment"
         android:label="FlowBasicFragment"
         tools:layout="@layout/fragment_flow_basic"
+        />
+    <fragment
+        android:id="@+id/flowOperatorsFragment"
+        android:name="ru.ivadimn.flowstudy.flowoperators.FlowOperatorsFragment"
+        android:label="FlowOperatorsFragment"
+        tools:layout="@layout/fragment_flow_operators"
         />
 
 </navigation>
