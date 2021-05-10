@@ -37,5 +37,14 @@
         android:layout_marginTop="16dp"
         android:textSize="16sp"
         />
+    <EditText
+        android:id="@+id/flowEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/random2TextView"
+        android:hint="Enter text"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,18 +1,24 @@
-package ru.ivadimn.flowstudy.flowbasic
+ package ru.ivadimn.flowstudy.flowbasic
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import ru.ivadimn.flowstudy.R
+import ru.ivadimn.flowstudy.changedTextFlow
 import ru.ivadimn.flowstudy.databinding.FragmentFlowBasicBinding
 import ru.ivadimn.flowstudy.viewBinding
 import kotlin.random.Random
@@ -28,7 +34,7 @@ class FlowBasicFragment : Fragment(R.layout.fragment_flow_basic) {
 
         val generator : Flow<Int> = createFlowGenerator()
 
-        binding.startButton.setOnClickListener {
+       /* binding.startButton.setOnClickListener {
             currentJob?.cancel()
             currentJob = viewLifecycleOwner.lifecycleScope.launch {
                 generator.collect {
@@ -36,8 +42,22 @@ class FlowBasicFragment : Fragment(R.layout.fragment_flow_basic) {
                     binding.random1TextView.text = it.toString()
                 }
             }
-        }
+        }*/
+
+        flowFromCallback()
    }
+
+
+    private fun flowFromCallback() {
+
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            binding.flowEditText.changedTextFlow().collect {
+                binding.random2TextView.text = it
+            }
+        }
+    }
+
 
     private fun createFlowGenerator() : Flow<Int> {
         return flow {
