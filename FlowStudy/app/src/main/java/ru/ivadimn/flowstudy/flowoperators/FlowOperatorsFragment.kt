@@ -106,7 +106,8 @@ class FlowOperatorsFragment : Fragment(R.layout.fragment_flow_operators) {
             .map { it * 2 }
             .catch { Log.d("Flow", "Map exception - $it") }
             .map { error("Test exception") }
-            .catch { Log.d("Flow", "map 2 exception - $it") }
+            .catch {
+                Log.d("Flow", "map 2 exception - $it") }
             .onEach { Log.d("Flow", "element - $it")  }
             .catch { Log.d("Flow", "after oneach exception - $it") }
             .launchIn(viewLifecycleOwner.lifecycleScope)
