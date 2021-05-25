@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ServiceStudy</string>
+    <string name="download">Download</string>
+    <string name="started_service">Started service</string>
 </resources>
