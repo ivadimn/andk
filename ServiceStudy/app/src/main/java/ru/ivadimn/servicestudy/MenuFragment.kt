@@ -16,5 +16,9 @@ class MenuFragment : Fragment(R.layout.fragment_menu) {
             val action = MenuFragmentDirections.actionMenuFragmentToStartedServiceFragment()
             findNavController().navigate(action)
         }
+        binding.workManagerButton.setOnClickListener {
+            val action = MenuFragmentDirections.actionMenuFragmentToWorkManagerFragment()
+            findNavController().navigate(action)
+        }
     }
 }

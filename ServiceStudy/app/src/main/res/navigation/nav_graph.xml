@@ -14,11 +14,20 @@
         <action
             android:id="@+id/action_menuFragment_to_startedServiceFragment"
             app:destination="@id/startedServiceFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_workManagerFragment"
+            app:destination="@id/workManagerFragment" />
     </fragment>
     <fragment
         android:id="@+id/startedServiceFragment"
         android:name="ru.ivadimn.servicestudy.services.StartedServiceFragment"
         android:label="StartedServiceFragment"
         tools:layout="@layout/fragment_started_service"
+        />
+    <fragment
+        android:id="@+id/workManagerFragment"
+        android:name="ru.ivadimn.servicestudy.works.WorkManagerFragment"
+        android:label="WorkManagerFragment"
+        tools:layout="@layout/fragment_work_manager"
         />
 </navigation>
