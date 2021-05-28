@@ -1,6 +1,7 @@
 package ru.ivadimn.servicestudy.works
 
 import android.content.Context
+import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import kotlinx.coroutines.delay
@@ -13,7 +14,15 @@ class DownloadWorker(
 
 
     override suspend fun doWork(): Result {
+        val urlToDownload = inputData.getString(DOWNLOAD_URL_KEY)
+
+        Log.d("Services", "Start work")
         delay(1000)
+        Log.d("Services", "Finish work")
         return Result.success()
+    }
+
+    companion object {
+        const val DOWNLOAD_URL_KEY = "DownloadUrl"
     }
 }
