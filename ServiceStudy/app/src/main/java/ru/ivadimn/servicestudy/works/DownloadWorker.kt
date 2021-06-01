@@ -19,7 +19,12 @@ class DownloadWorker(
         Log.d("Services", "Start work")
         delay(1000)
         Log.d("Services", "Finish work")
-        return Result.success()
+        return when(urlToDownload) {
+            "1" -> Result.retry()
+            "2" -> Result.failure()
+            else -> Result.success()
+        }
+
     }
 
     companion object {
