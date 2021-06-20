@@ -15,13 +15,19 @@ import java.util.concurrent.TimeUnit
 class WorkManagerFragment : Fragment(R.layout.fragment_work_manager) {
 
     private val binding : FragmentWorkManagerBinding by viewBinding(FragmentWorkManagerBinding::bind)
+    private var isFirstStarted : Boolean = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        isFirstStarted = true
         WorkManager.getInstance(requireContext())
             .getWorkInfosForUniqueWorkLiveData(DOWNLOAD_WORK_ID)
-            .observe(viewLifecycleOwner, {handleWorkInfo(it.first())})
+            .observe(viewLifecycleOwner, {
+                if (!isFirstStarted) {
+                    handleWorkInfo(it.first())
+                    isFirstStarted = false
+                }
+            })
 
         binding.loadButton.setOnClickListener {
             startDownload()
