@@ -7,9 +7,17 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import com.example.workstudy.App
+import com.example.workstudy.exceptions.DownloadException
+import com.example.workstudy.exceptions.NetworkException
 import com.example.workstudy.network.Network
 import kotlinx.coroutines.delay
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class Downloader(
     val context: Context,
@@ -17,6 +25,7 @@ class Downloader(
 ) : CoroutineWorker(context, params) {
 
     private val fileApi = Network.fileApi
+    private var call : Call<ResponseBody>? = null
 
     override suspend fun doWork(): Result {
 
@@ -28,15 +37,22 @@ class Downloader(
         }
 
         return try {
-            download(url, fileName)
+            downloadCall(url, fileName)
             Result.success()
         }
-        catch (t : Throwable) {
-            Log.d("Work", "DoWork exception - ${t.message} ")
-            val errorData = workDataOf(DOWNLOAD_RESULT_KEY to t.message)
+        catch (ex : DownloadException) {
+            Log.d("Work", "Download exception - ${ex.message} ")
+            call?.cancel()
             Result.retry()
         }
+        catch (ex : NetworkException) {
+            Log.d("Work", "Newwork exception - ${ex.message} ")
+            val errorData = workDataOf(DOWNLOAD_RESULT_KEY to ex.message)
+            call?.cancel()
+            Result.failure(errorData)
+        }
         finally {
+            call = null
             Log.d("Work", "DoWork was finishing ... ")
         }
     }
@@ -55,6 +71,41 @@ class Downloader(
                     inStream.copyTo(outStream)
                 }
         }
+    }
+
+    private suspend fun downloadCall(url: String, fileName: String) {
+        if (Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED) {
+            throw RuntimeException("External storage unavailable")
+        }
+        val folder = App.context.getExternalFilesDir(FILES_DATASTORE_NAME)
+        val file = File(folder, fileName)
+
+        call = fileApi.get1(url)
+        call?.enqueue(
+             object : Callback<ResponseBody> {
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>
+             ) {
+                    if (response.isSuccessful) {
+                        file.outputStream().use { outStream ->
+                            response.body()?.bytes()?.inputStream().use { inputStream ->
+                                inputStream?.copyTo(outStream)
+                           }
+                        }
+                       //cont.resumeWith(kotlin.Result.success(true))
+                   }
+                   else {
+                        throw DownloadException()
+                   }
+               }
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    throw NetworkException(t.message ?: "сеть недоступна" )
+                    //cont.resumeWithException(NetworkException(t.message ?: "сеть недоступна" ))
+
+               }
+            }
+        )
     }
 
     companion object {

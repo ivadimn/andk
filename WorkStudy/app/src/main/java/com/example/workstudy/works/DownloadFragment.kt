@@ -3,6 +3,7 @@ package com.example.workstudy.works
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -58,9 +59,8 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
         Log.d("Work", "Init views")
         createUrlList()
         binding.startDownloadButton.setOnClickListener {
-            val url = binding.urlTextView.text.toString()
+            val url = binding.urlEditText.text.toString()
             if (url.isNotEmpty()) {
-                Log.d("Work", url)
                 val fileName = buildFileName(url)
                 startDownload(url, fileName)
                 isWorkRunning = true
@@ -109,9 +109,27 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
     }
 
     private fun createUrlList() {
-        val adapter = ArrayAdapter<String>(requireContext(), R.layout.url_view,
+        val adapter = ArrayAdapter<String>(requireContext(),
+            android.R.layout.simple_spinner_item,
             urls)
-        binding.urlTextView.setAdapter(adapter)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.urlSpinner.adapter = adapter
+
+        binding.urlSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    binding.urlEditText.setText(adapter.getItem(position) ?: "")
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) { }
+
+            }
+
     }
 
     private fun startDownload(url: String, fileName : String) {
@@ -143,5 +161,9 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
 
     fun buildFileName(url : String) : String{
         return "${url.substring(url.lastIndexOf("/") + 1)}"
+    }
+
+    companion object {
+        const val SELECTED_URL_KEY = "SelectedUrlKey"
     }
 }
