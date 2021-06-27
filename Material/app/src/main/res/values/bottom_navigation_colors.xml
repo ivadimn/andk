@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="iconColor">@color/white</color>
+    <color name="iconSelectedColor">@color/yellow</color>
+    <color name="textColor">@color/white</color>
+    <color name="textSelectedColor">@color/yellow</color>
+    <color name="backgroundColor">@color/gray_500</color>
+</resources>

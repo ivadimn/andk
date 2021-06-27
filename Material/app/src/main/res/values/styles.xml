@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+    <style name="BottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="android:background">@color/backgroundColor</item>
+        <item name="itemIconTint">@color/navigation_icon_color</item>
+        <item name="itemTextColor">@color/navigation_text_color</item>
+    </style>
+
+    <style name="TextAppearance.Custom.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+
+        <item name="android:textStyle">italic</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.1</item>
+
+    </style>
+</resources>

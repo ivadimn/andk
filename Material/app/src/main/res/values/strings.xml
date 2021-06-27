@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Material</string>
+    <string name="favorites">Favorites</string>
+    <string name="people">People</string>
+    <string name="images">Images</string>
+    <string name="notes">Notes</string>
+</resources>
