@@ -5,4 +5,5 @@
     <string name="start_download">Start download</string>
     <string name="stop_download">Stop download</string>
     <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
 </resources>

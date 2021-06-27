@@ -8,7 +8,7 @@ import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import com.example.workstudy.App
 import com.example.workstudy.exceptions.DownloadException
-import com.example.workstudy.exceptions.NetworkException
+import com.example.workstudy.exceptions.NetException
 import com.example.workstudy.network.Network
 import kotlinx.coroutines.delay
 import okhttp3.ResponseBody
@@ -16,6 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
+import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
@@ -42,15 +43,16 @@ class Downloader(
         }
         catch (ex : DownloadException) {
             Log.d("Work", "Download exception - ${ex.message} ")
-            call?.cancel()
-            Result.retry()
-        }
-        catch (ex : NetworkException) {
-            Log.d("Work", "Newwork exception - ${ex.message} ")
             val errorData = workDataOf(DOWNLOAD_RESULT_KEY to ex.message)
             call?.cancel()
             Result.failure(errorData)
         }
+        catch (ex : NetException) {
+            Log.d("Work", "Newwork exception - ${ex.message} ")
+            call?.cancel()
+            Result.retry()
+        }
+
         finally {
             call = null
             Log.d("Work", "DoWork was finishing ... ")
@@ -79,34 +81,36 @@ class Downloader(
         }
         val folder = App.context.getExternalFilesDir(FILES_DATASTORE_NAME)
         val file = File(folder, fileName)
-
-        call = fileApi.get1(url)
-        call?.enqueue(
-             object : Callback<ResponseBody> {
+        delay(7000)
+        suspendCoroutine<String> {
+            continuation ->
+            call = fileApi.get1(url)
+            call?.enqueue(
+                object : Callback<ResponseBody> {
                     override fun onResponse(
                         call: Call<ResponseBody>,
                         response: Response<ResponseBody>
-             ) {
-                    if (response.isSuccessful) {
-                        file.outputStream().use { outStream ->
-                            response.body()?.bytes()?.inputStream().use { inputStream ->
-                                inputStream?.copyTo(outStream)
-                           }
+                    ) {
+                        if (response.isSuccessful) {
+                            file.outputStream().use { outStream ->
+                                response.body()?.bytes()?.inputStream().use { inputStream ->
+                                    inputStream?.copyTo(outStream)
+                                }
+                            }
+                            continuation.resume("Download complete")
                         }
-                       //cont.resumeWith(kotlin.Result.success(true))
-                   }
-                   else {
-                        throw DownloadException()
-                   }
-               }
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    throw NetworkException(t.message ?: "сеть недоступна" )
-                    //cont.resumeWithException(NetworkException(t.message ?: "сеть недоступна" ))
-
-               }
-            }
-        )
-    }
+                        else {
+                            val msg = "Error code - ${response.code()},  ${response.message()}"
+                            continuation.resumeWithException(DownloadException(msg))
+                        }
+                    }
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        continuation.resumeWithException(NetException(t.message ?: "сеть недоступна" ))
+                    }
+                }
+            )
+        }
+   }
 
     companion object {
         private const val FILES_DATASTORE_NAME = "FilesDatastore"

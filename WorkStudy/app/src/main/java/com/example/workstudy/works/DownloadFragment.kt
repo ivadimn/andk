@@ -59,15 +59,16 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
         Log.d("Work", "Init views")
         createUrlList()
         binding.startDownloadButton.setOnClickListener {
-            val url = binding.urlEditText.text.toString()
-            if (url.isNotEmpty()) {
-                val fileName = buildFileName(url)
-                startDownload(url, fileName)
-                isWorkRunning = true
-            }
+            runWork()
         }
         binding.stopDownloadButton.setOnClickListener {
             stopDownload()
+        }
+        binding.retryButton.setOnClickListener {
+            runWork()
+        }
+        binding.cancelButton.setOnClickListener {
+            cancel()
         }
     }
 
@@ -80,28 +81,34 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
         when(workInfos[0].state) {
             WorkInfo.State.ENQUEUED -> showStateText("Ожидание загрузки")
             WorkInfo.State.RUNNING -> showStateText("Загрузка")
-            WorkInfo.State.FAILED -> showStateText("Загрузка завершена с ошибкой")
+            WorkInfo.State.CANCELLED -> {
+                showStateText("Загрузка была прервана")
+                isWorkRunning = false
+            }
+            WorkInfo.State.FAILED ->  {
+                showStateText("Загрузка завершена с ошибкой")
+                isWorkRunning = false
+            }
             WorkInfo.State.SUCCEEDED -> {
                 showStateText("Загружка завершена успешно")
-                toast("Download was finished succeess")
+                toast("Download was finished success")
+                isWorkRunning = false
             }
         }
 
         if (errorData != null) {
             showStateText(errorData)
-            binding.retryButton.isVisible = true
-        }
-        else {
-            binding.retryButton.isVisible = false
         }
 
-        updateLoadingState(!workInfos[0].state.isFinished)
+        updateLoadingState(!workInfos[0].state.isFinished, errorData != null)
     }
 
-    private fun updateLoadingState(isLoading : Boolean) {
+    private fun updateLoadingState(isLoading : Boolean, isError : Boolean) {
         binding.progressBar.isVisible = isLoading
-        binding.startDownloadButton.isVisible = !isLoading
+        binding.startDownloadButton.isVisible = !isLoading && !isError
         binding.stopDownloadButton.isVisible = isLoading
+        binding.retryButton.isVisible = !isLoading && isError
+        binding.cancelButton.isVisible = !isLoading && isError
     }
 
     private fun showStateText(stateText : String) {
@@ -132,6 +139,15 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
 
     }
 
+    private fun runWork() {
+        val url = binding.urlEditText.text.toString()
+        if (url.isNotEmpty()) {
+            val fileName = buildFileName(url)
+            startDownload(url, fileName)
+            isWorkRunning = true
+        }
+    }
+
     private fun startDownload(url: String, fileName : String) {
         val downloadData = workDataOf(
             Downloader.DOWNLOAD_URL_KEY to url,
@@ -146,7 +162,7 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
         val workRequest = OneTimeWorkRequestBuilder<Downloader>()
             .setInputData(downloadData)
             .setBackoffCriteria(BackoffPolicy.LINEAR, 20, TimeUnit.SECONDS)
-            .setConstraints(workConstraints)
+           // .setConstraints(workConstraints)
             .build()
 
 
@@ -157,6 +173,11 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
     private fun stopDownload() {
         WorkManager.getInstance(App.context)
             .cancelUniqueWork(Downloader.DOWNLOAD_WORK_ID)
+    }
+
+    private fun cancel() {
+        showStateText("")
+        updateLoadingState(isLoading =  false, isError = false)
     }
 
     fun buildFileName(url : String) : String{
