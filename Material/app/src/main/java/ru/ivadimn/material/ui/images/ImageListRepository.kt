@@ -1,4 +1,4 @@
-package ru.ivadimn.material.model
+package ru.ivadimn.material.ui.images
 
 import android.content.ContentUris
 import android.provider.MediaStore
@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.ivadimn.material.App
 import ru.ivadimn.material.haveQ
+import ru.ivadimn.material.model.Image
 
 class ImageListRepository {
 
