@@ -14,6 +14,12 @@
         <action
             android:id="@+id/action_mainFragment_to_stubFragment"
             app:destination="@id/stubFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_imageListFragment"
+            app:destination="@id/imageListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_peopleFragment"
+            app:destination="@id/peopleFragment" />
     </fragment>
     <fragment
         android:id="@+id/stubFragment"
@@ -24,4 +30,16 @@
             android:name="caption"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/imageListFragment"
+        android:name="ru.ivadimn.material.ui.images.ImageListFragment"
+        android:label="ImageListFragment"
+        tools:layout="@layout/fragment_list_image"
+        />
+    <fragment
+        android:id="@+id/peopleFragment"
+        android:name="ru.ivadimn.material.ui.people.PeopleFragment"
+        android:label="PeopleFragment"
+        tools:layout="@layout/fragment_people"
+        />
 </navigation>

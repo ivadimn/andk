@@ -2,15 +2,18 @@ package ru.ivadimn.material.ui.images
 
 import android.content.ContentUris
 import android.provider.MediaStore
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.ivadimn.material.App
 import ru.ivadimn.material.haveQ
 import ru.ivadimn.material.model.Image
+import ru.ivadimn.material.utils.Lorem
+import kotlin.random.Random
 
 class ImageListRepository {
 
-    private suspend fun getImages() : List<Image> {
+    suspend fun getImages() : List<Image> {
 
         val images = mutableListOf<Image>()
         withContext(Dispatchers.IO) {
@@ -18,7 +21,6 @@ class ImageListRepository {
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 null, null, null, null
             )?.use {
-                //Log.d( "Media",  DatabaseUtils.dumpCursorToString(it))
                 while (it.moveToNext()) {
                     if (haveQ()) {
                         val pending = it.getInt(it.getColumnIndex(MediaStore.MediaColumns.IS_PENDING))
@@ -31,7 +33,7 @@ class ImageListRepository {
                     val height = it.getInt(it.getColumnIndex(MediaStore.Images.ImageColumns.HEIGHT))
 
                     val uri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
-                    val description = "Description"
+                    val description = Lorem.generate(Random.nextInt(5, 10))
                     images += Image(id, uri, name, description, size, width, height)
                 }
             }

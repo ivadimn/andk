@@ -4,4 +4,7 @@
     <string name="people">People</string>
     <string name="images">Images</string>
     <string name="notes">Notes</string>
+    <string name="snackMessageAction">Server is unavailable, show saved images</string>
+    <string name="repeat">RETRY</string>
+    <string name="list_updates">List updated</string>
 </resources>

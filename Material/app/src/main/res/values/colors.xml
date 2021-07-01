@@ -20,5 +20,6 @@
 
     <color name="yellow">#EAF13B</color>
     <color name="gray_500">#616161</color>
+    <color name="cardBackgroundColor">#F1ECE3</color>
 
 </resources>

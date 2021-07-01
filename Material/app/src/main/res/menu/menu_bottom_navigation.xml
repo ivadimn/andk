@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menuItemFavorites"
-        android:title="@string/favorites"
+    <item android:id="@+id/menuItemImages"
+        android:title="@string/images"
         android:enabled="true"
-        android:icon="@drawable/ic_favorite"
+        android:icon="@drawable/ic_image"
         />
     <item android:id="@+id/menuItemPeople"
         android:title="@string/people"
         android:enabled="true"
         android:icon="@drawable/ic_people"
         />
-    <item android:id="@+id/menuItemMusic"
-        android:title="@string/images"
+    <item android:id="@+id/menuItemFavorites"
+        android:title="@string/favorites"
         android:enabled="true"
-        android:icon="@drawable/ic_music"
+        android:icon="@drawable/ic_favorite"
         />
     <item android:id="@+id/menuItemNotes"
         android:title="@string/notes"
