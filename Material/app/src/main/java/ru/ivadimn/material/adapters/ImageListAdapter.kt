@@ -2,7 +2,7 @@ package ru.ivadimn.material.adapters
 
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import ru.ivadimn.material.model.Image
-import ru.ivadimn.material.model.ImageDiffUtilCallback
+import ru.ivadimn.material.ui.images.ImageDiffUtilCallback
 
 class ImageListAdapter
     : AsyncListDifferDelegationAdapter<Image>(ImageDiffUtilCallback())
