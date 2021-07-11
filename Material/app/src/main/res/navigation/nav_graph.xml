@@ -35,11 +35,24 @@
         android:name="ru.ivadimn.material.ui.images.ImageListFragment"
         android:label="ImageListFragment"
         tools:layout="@layout/fragment_list_image"
-        />
+        >
+        <action
+            android:id="@+id/action_imageListFragment_to_imageDetailFragment"
+            app:destination="@id/imageDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/peopleFragment"
         android:name="ru.ivadimn.material.ui.people.PeopleFragment"
         android:label="PeopleFragment"
         tools:layout="@layout/fragment_people"
         />
+    <fragment
+        android:id="@+id/imageDetailFragment"
+        android:name="ru.ivadimn.material.ui.imagedetail.ImageDetailFragment"
+        android:label="ImageDetailFragment"
+        tools:layout="@layout/fragment_image_detail">
+        <argument
+            android:name="image"
+            app:argType="ru.ivadimn.material.model.Image" />
+    </fragment>
 </navigation>

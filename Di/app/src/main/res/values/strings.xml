@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Di</string>
+    <string name="user_name">User name</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="user_family">User family</string>
+    <string name="phone_number">Phone number</string>
+    <string name="email_address">Email address</string>
+    <string name="user_list">User list</string>
+    <string name="delete">Delete</string>
+</resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Material</string>
+    <string name="app_name">MaterialDesign</string>
     <string name="favorites">Favorites</string>
     <string name="people">People</string>
     <string name="images">Images</string>
@@ -7,4 +7,9 @@
     <string name="snackMessageAction">Server is unavailable, show saved images</string>
     <string name="repeat">RETRY</string>
     <string name="list_updates">List updated</string>
+
+    <!-- Transition Names -->
+    <string name="transition_card_image_view">ImageCardTransition</string>
+    <string name="transition_card_image_detail_view">ImageCardToDetailTransition</string>
+
 </resources>
