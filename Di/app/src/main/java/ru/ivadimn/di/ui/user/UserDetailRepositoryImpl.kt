@@ -97,7 +97,7 @@ class UserDetailRepositoryImpl (
         userPhoto = bmp
     }
 
-   /* override suspend fun getPhotoUri() : Uri {
+   /*override fun getPhotoUri() : Uri {
         val volume = if (haveQ()) {
             MediaStore.VOLUME_EXTERNAL_PRIMARY
         }
@@ -116,7 +116,7 @@ class UserDetailRepositoryImpl (
         val collectionUri = MediaStore.Images.Media.getContentUri(volume)
          Log.d("DINJ", "Collection uri - $collectionUri")
         val uri = App.context.contentResolver.insert(collectionUri, contentValues)
-         Log.d("DINJ", "Photo uri - $uri")
+        Log.d("DINJ", "Photo uri - $uri")
         if (haveQ()) {
             uri?.let {
                 App.context.contentResolver.update(
@@ -128,7 +128,7 @@ class UserDetailRepositoryImpl (
             }
         }
         return uri!!
-    } */
+    }*/
 
     private fun createImageFile(): File {
         // Create an image file name
