@@ -115,6 +115,6 @@ class ScanRepository {
 
     }
     fun toPdf() {
-        val doc = PdfDocument.
+
     }
 }
